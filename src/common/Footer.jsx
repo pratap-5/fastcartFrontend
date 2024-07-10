@@ -5,8 +5,10 @@ import { FaTwitterSquare } from "react-icons/fa";
 import { FaLinkedin } from "react-icons/fa";
 import { FaInstagram } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import useLogout from "../hooks/useLogout";
 
 const Footer = () => {
+  const { loading, logout } = useLogout();
   return (
     <footer className=" bg-[#150619] text-white py-8">
       <div className="container mx-auto px-4">
@@ -42,9 +44,9 @@ const Footer = () => {
                 </Link>
               </li>
               <li className="mb-2">
-                <Link to="/logout" className="hover:text-gray-400">
+                <link onClick={() => logout()} className="hover:text-gray-400">
                   logout
-                </Link>
+                </link>
               </li>
             </ul>
           </div>
