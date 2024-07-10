@@ -22,7 +22,7 @@ function useAddToCart() {
       const data = await res.json();
 
       if (data.error) {
-        toast.error(data.error);
+        toast.error("create account to acccess the fetaure");
         throw new Error(data.error);
       }
       toast.success("added to cart");
