@@ -44,9 +44,9 @@ const Footer = () => {
                 </Link>
               </li>
               <li className="mb-2">
-                <link onClick={() => logout()} className="hover:text-gray-400">
+                <span onClick={() => logout()} className="hover:text-gray-400">
                   logout
-                </link>
+                </span>
               </li>
             </ul>
           </div>
