@@ -4,7 +4,7 @@ import { FaFacebook } from "react-icons/fa";
 import { FaTwitterSquare } from "react-icons/fa";
 import { FaLinkedin } from "react-icons/fa";
 import { FaInstagram } from "react-icons/fa";
-
+import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
@@ -27,24 +27,24 @@ const Footer = () => {
             <h4 className="text-xl font-bold mb-4">Quick Links</h4>
             <ul>
               <li className="mb-2">
-                <a href="/" className="hover:text-gray-400">
+                <Link to="/" className="hover:text-gray-400">
                   Home
-                </a>
+                </Link>
               </li>
               <li className="mb-2">
-                <a href="/cart" className="hover:text-gray-400">
+                <Link to="/cart" className="hover:text-gray-400">
                   cart
-                </a>
+                </Link>
               </li>
               <li className="mb-2">
-                <a href="/login" className="hover:text-gray-400">
+                <Link to="/login" className="hover:text-gray-400">
                   login
-                </a>
+                </Link>
               </li>
               <li className="mb-2">
-                <a href="/logout" className="hover:text-gray-400">
+                <Link to="/logout" className="hover:text-gray-400">
                   logout
-                </a>
+                </Link>
               </li>
             </ul>
           </div>
