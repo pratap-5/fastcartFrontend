@@ -1,17 +1,12 @@
 import React, { useState } from "react";
 import { FaSearch } from "react-icons/fa";
-import { IoPersonCircleSharp } from "react-icons/io5";
 
-import { FaShoppingCart } from "react-icons/fa";
 import { FaTruckFast } from "react-icons/fa6";
 import { Link, useNavigate } from "react-router-dom";
-import { useAuthContext } from "../context/AuthContext";
-import useLogout from "../hooks/useLogout";
+import SideMenu from "../components/SideMenu";
 
 function Header() {
-  const { authUser } = useAuthContext();
   const navigate = useNavigate();
-  const { loading, logout } = useLogout();
 
   const [search, setSearch] = useState("");
   return (
@@ -47,51 +42,7 @@ function Header() {
         </button>
       </form>
 
-      <div className=" md:flex justify-center items-center gap-4  hidden ">
-        {authUser ? (
-          <span className="  cursor-pointer hover:text-[#3b3b3b]  text-[30px]">
-            <IoPersonCircleSharp />
-          </span>
-        ) : (
-          ""
-        )}
-
-        <span
-          onClick={() => {
-            navigate("/cart");
-          }}
-          className="  cursor-pointer hover:text-[#3b3b3b] relative text-[30px]"
-        >
-          <FaShoppingCart />{" "}
-          <span className="  absolute bg-orange-600  w-[13px] h-[13px] rounded-full top-0 right-0 text-center flex justify-center items-center text-[10px] font-bold  text-black">
-            1
-          </span>
-        </span>
-
-        {authUser ? (
-          <button
-            onClick={() => {
-              if (logout()) navigate("/");
-            }}
-            className=" btn  "
-          >
-            {loading ? (
-              <span className="loading loading-spinner"></span>
-            ) : (
-              "logout"
-            )}
-          </button>
-        ) : (
-          <button
-            onClick={() => {
-              navigate("/login");
-            }}
-            className="  btn "
-          >
-            login
-          </button>
-        )}
-      </div>
+      <SideMenu/>
     </header>
   );
 }
