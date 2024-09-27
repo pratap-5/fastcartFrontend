@@ -12,11 +12,11 @@ function useSignup() {
     email,
     password,
     confirmPassword,
-    gender,
+
   }) => {
     try {
       console.log(backendUrl);
-      if (!checkData(fullName, email, password, confirmPassword, gender))
+      if (!checkData(fullName, email, password, confirmPassword))
         return;
       setLoading(true);
       const res = await fetch(`${backendUrl}/api/auth/signup`, {
@@ -28,7 +28,7 @@ function useSignup() {
           email,
           password,
           confirmPassword,
-          gender,
+      
         }),
       });
 
@@ -56,8 +56,8 @@ function useSignup() {
 
 export default useSignup;
 
-const checkData = (fullName, email, password, confirmPassword, gender) => {
-  if (!fullName || !email || !password || !confirmPassword || !gender) {
+const checkData = (fullName, email, password, confirmPassword) => {
+  if (!fullName || !email || !password || !confirmPassword ) {
     toast.error("fiil all  the fields");
 
     return false;

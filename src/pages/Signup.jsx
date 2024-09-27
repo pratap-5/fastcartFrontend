@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-import Header from "../common/Header";
+
 
 import { BsFillEyeFill } from "react-icons/bs";
 import { BsFillEyeSlashFill } from "react-icons/bs";
@@ -14,7 +14,7 @@ function Signup() {
     email: "",
     password: "",
     confirmPassword: "",
-    gender: "",
+  
   });
   const [isPass, setPass] = useState(true);
 
@@ -25,8 +25,8 @@ function Signup() {
   };
   return (
     <>
-      <div className=" w-full h-screen  bg-[#e6dfe8]  rounded-t-[50px] ">
-        <Header />
+      <div className=" w-full h-screen  bg-[#e6dfe8]  ">
+   
         <div className="flex justify-center items-center p-3 h-[87%] ">
           <form
             onSubmit={handleSubmit}
@@ -88,7 +88,6 @@ function Signup() {
               required
             />
 
-            <Gender userInfo={userInfo} setUserInfo={setUserInfo} />
             <div className="w-full flex items-center justify-center">
               <button className="btn   capitalize  w-1/2">
                 {loading ? (
@@ -113,57 +112,3 @@ function Signup() {
 }
 
 export default Signup;
-
-const Gender = ({ setUserInfo, userInfo }) => {
-  return (
-    <div className=" flex justify-start items-center  ">
-      <label className=" text-black mb-2">Gender :</label>
-
-      <div className="flex justify-center items-center mb-2 p-2">
-        <input
-          type="radio"
-          id="male"
-          name="gender"
-          value="male"
-          onChange={(e) => {
-            setUserInfo({ ...userInfo, gender: e.target.value });
-          }}
-          className="radio radio-primary  mr-2"
-        />
-        <label htmlFor="male" className="text-gray-600">
-          Male
-        </label>
-      </div>
-      <div className="flex justify-center items-center mb-2 p-2">
-        <input
-          type="radio"
-          id="female"
-          name="gender"
-          value="female"
-          onChange={(e) => {
-            setUserInfo({ ...userInfo, gender: e.target.value });
-          }}
-          className="radio radio-primary  mr-2"
-        />
-        <label htmlFor="female" className="text-gray-600">
-          Female
-        </label>
-      </div>
-      <div className="flex p-2 items-center  justify-center mb-2">
-        <input
-          type="radio"
-          id="other"
-          name="gender"
-          value="other"
-          onChange={(e) => {
-            setUserInfo({ ...userInfo, gender: e.target.value });
-          }}
-          className="radio radio-primary  mr-2"
-        />
-        <label htmlFor="other" className="text-gray-600">
-          Other
-        </label>
-      </div>
-    </div>
-  );
-};

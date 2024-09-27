@@ -2,18 +2,21 @@ import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import { Navigate, Route, Routes } from "react-router-dom";
-import Cart from "./pages/Cart";
+
 import { Toaster } from "react-hot-toast";
 import { useAuthContext } from "./context/AuthContext";
-import ProductDetails from "./pages/ProductDetails";
-import PaymentPage from "./pages/PaymentPage";
-import SearchList from "./pages/SearchList";
-import Footer from "./common/Footer";
+import Header from "./common/Header";
+import AddTask from "./pages/AddTask";
+import UpdateTask from "./pages/UpdateTask";
+
+
 
 function App() {
   const { authUser } = useAuthContext();
   return (
-    <div className=" relative pt-3 md:pt-5 w-full h-auto  bg-[#150619]">
+    <div className=" relative  w-full h-auto  ]">
+      <Header/>
+  
       <Routes>
         <Route path="/" element={<Home />} />
 
@@ -25,19 +28,29 @@ function App() {
           path="/signup"
           element={authUser ? <Navigate to="/" /> : <Signup />}
         />
+        <Route
+          path="/addtask"
+          // element={!authUser ? <Navigate to="/login" /> : <AddTask />}
+          element={ <AddTask />}
+          
+
+        />
+
+
 
         <Route
-          path="/cart"
-          element={authUser ? <Cart /> : <Navigate to="/login" />}
+          path="/updateTask"
+          // element={!authUser ? <Navigate to="/login" /> : <AddTask />}
+          element={ <UpdateTask/>}
+          
+
         />
-        <Route
-          path="/payment/:productId"
-          element={authUser ? <PaymentPage /> : <Navigate to="/login" />}
-        />
-        <Route path="/details/:productId" element={<ProductDetails />} />
-        <Route path="/search/:searchItem" element={<SearchList />} />
+
+
       </Routes>
-      <Footer />
+   
+
+   
       <Toaster />
     </div>
   );

@@ -22,8 +22,8 @@ function Login() {
   };
   return (
     <>
-      <div className=" w-full h-screen  bg-[#e6dfe8]  rounded-t-[50px] ">
-        <Header />
+      <div className=" w-full h-screen  bg-[#e6dfe8]">
+       
         <div className="flex justify-center items-center p-3 h-[85%] ">
           <form
             onSubmit={handleSubmit}

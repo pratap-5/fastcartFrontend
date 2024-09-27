@@ -1,22 +1,77 @@
 import React, { useEffect, useState } from "react";
-
 import Header from "../common/Header";
-import ImageCoursal from "../components/ImageCoursal";
-import Products from "../components/products/Products";
-import useGetProducts from "../hooks/useProducts";
+import Task from "../components/Task";
+import { LuFolderMinus } from "react-icons/lu";
 
 function Home() {
-  const { loading, getProducts } = useGetProducts();
-
-  useEffect(() => {
-    getProducts();
-  }, []);
-
   return (
-    <div className=" w-full  h-full  bg-[#e6dfe8]  rounded-t-[50px] p-2">
-      <Header />
-      <ImageCoursal />
-      <Products loading={loading} />
+    <div className=" w-full  min-h-screen max-h-full  bg-[#e6dfe8]  p-2 grid grid-cols-3 gap-2  ">
+      <Task
+        taskName={"api add"}
+        taskDetails={`Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam
+      temporibus eligendi omnis iure consequuntur quo non blanditiis, deleniti,
+      veniam doloribus fuga ratione pariatur asperiores animi! Voluptate rem
+      esse reiciendis ipsam.`}
+        status={"progress"}
+        priority={"mid"}
+        due_date={"23 may"}
+        user={"admin"}
+      />
+      <Task
+        taskName={"api add"}
+        taskDetails={`Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam
+      temporibus eligendi omnis iure consequuntur quo non blanditiis, deleniti,
+      veniam doloribus fuga ratione pariatur asperiores animi! Voluptate rem
+      esse reiciendis ipsam.`}
+        status={"progress"}
+        priority={"mid"}
+        due_date={"23 may"}
+        user={"admin"}
+      />{" "}
+      <Task
+        taskName={"api add"}
+        taskDetails={`Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam
+    temporibus eligendi omnis iure consequuntur quo non blanditiis, deleniti,
+    veniam doloribus fuga ratione pariatur asperiores animi! Voluptate rem
+    esse reiciendis ipsam.`}
+        status={"progress"}
+        priority={"mid"}
+        due_date={"23 may"}
+        user={"admin"}
+      />{" "}
+      <Task
+        taskName={"api add"}
+        taskDetails={`Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam
+  temporibus eligendi omnis iure consequuntur quo non blanditiis, deleniti,
+  veniam doloribus fuga ratione pariatur asperiores animi! Voluptate rem
+  esse reiciendis ipsam.`}
+        status={"progress"}
+        priority={"mid"}
+        due_date={"23 may"}
+        user={"admin"}
+      />{" "}
+      <Task
+        taskName={"api add"}
+        taskDetails={`Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam
+temporibus eligendi omnis iure consequuntur quo non blanditiis, deleniti,
+veniam doloribus fuga ratione pariatur asperiores animi! Voluptate rem
+esse reiciendis ipsam.`}
+        status={"progress"}
+        priority={"mid"}
+        due_date={"23 may"}
+        user={"admin"}
+      />{" "}
+      <Task
+        taskName={"api add"}
+        taskDetails={`Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam
+      temporibus eligendi omnis iure consequuntur quo non blanditiis, deleniti,
+      veniam doloribus fuga ratione pariatur asperiores animi! Voluptate rem
+      esse reiciendis ipsam.`}
+        status={"progress"}
+        priority={"mid"}
+        due_date={"23 may"}
+        user={"admin"}
+      />
     </div>
   );
 }
