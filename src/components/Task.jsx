@@ -2,18 +2,17 @@ import React from "react";
 import useData from "../zustand/useData";
 import { useNavigate } from "react-router-dom";
 
-function Task({ taskName, taskDetails, status, priority, due_date, user }) {
+function Task({ title, description, status, priority, due_date, user }) {
   const navigate = useNavigate();
-  const { setTaskName, setTaskDetails } = useData();
+  const { setTaskData } = useData();
   return (
     <div className="bg-slate-400 text-primary-content w-full card">
       <div className="card-body">
-        <h2 className="card-title text-4xl capitalize">{taskName}</h2>
+        <h2 className="card-title text-4xl capitalize">{title}</h2>
         <hr />
 
         <span className="flex gap-1 flex-col">
           <h2 className=" font-medium text-slate-700 capitalize">
-            {" "}
             status :{status}
           </h2>
           <h2 className=" font-medium text-slate-700 capitalize">
@@ -27,14 +26,12 @@ function Task({ taskName, taskDetails, status, priority, due_date, user }) {
           </h2>
         </span>
 
-        <p>{taskDetails}</p>
+        <p>{description}</p>
 
         <div className="card-actions justify-end c">
           <button
             onClick={() => {
-              setTaskName(taskName);
-              setTaskDetails(taskDetails);
-
+              setTaskData({ title, description, status, priority, due_date });
               navigate("/updateTask");
             }}
             className="capitalize btn"
