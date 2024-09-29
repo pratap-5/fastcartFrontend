@@ -19,10 +19,11 @@ function UpdateTask() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    updateTask(taskDatas);
+    const fetch = async () => {
+      updateTask(taskDatas);
+    };
+    fetch();
     navigate("/");
-    window.location.reload();
-   
   };
 
   return (

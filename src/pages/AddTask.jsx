@@ -16,10 +16,12 @@ function AddTask() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    addTask(taskData);
+
+    const fetch = async () => {
+      addTask(taskData);
+    };
+    fetch();
     navigate("/");
-    window.location.reload();
-   
   };
 
   return (

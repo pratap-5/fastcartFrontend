@@ -61,7 +61,10 @@ function Task({
           </button>
           <button
             onClick={() => {
-              deleteTask(task_id);
+              const fetch = async () => {
+                deleteTask(task_id);
+              };
+              fetch();
               navigate("/");
               window.location.reload();
             }}
