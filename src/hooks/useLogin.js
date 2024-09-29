@@ -9,7 +9,7 @@ function useLogin() {
   const { backendUrl } = useData();
   const login = async ({ email, password }) => {
     try {
-      console.log(backendUrl);
+    
       if (!checkData(email, password)) return;
       setLoading(true);
       const res = await fetch(`${backendUrl}/api/auth/login`, {
