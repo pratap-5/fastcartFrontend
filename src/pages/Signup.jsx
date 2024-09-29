@@ -30,7 +30,7 @@ function Signup() {
         <div className="flex justify-center items-center p-3 h-[87%] ">
           <form
             onSubmit={handleSubmit}
-            className=" w-full  h-full  md:w-[700px] md:h-[100%] border bg-slate-50 shadow-md rounded-xl p-3"
+            className=" w-full  h-full  md:w-[700px]  border bg-slate-50 shadow-md rounded-xl p-3"
           >
             <h1 className="text-center text-5xl font-semibold">Signup Page</h1>
             <div className="divider"></div>

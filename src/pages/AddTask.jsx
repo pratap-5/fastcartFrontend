@@ -25,7 +25,7 @@ function AddTask() {
     <div className=" w-full  flex  items-center justify-center min-h-screen max-h-full  bg-[#e6dfe8]  p-2  ">
       <form
         onSubmit={handleSubmit}
-        className=" w-1/2 h-full  border bg-slate-50 shadow-md rounded-xl p-3 flex flex-col  items-center justify-center gap-1"
+        className=" w-full  md:w-[700px] h-full  border bg-slate-50 shadow-md rounded-xl p-3 flex flex-col  items-center justify-center gap-1"
       >
         <h1 className="text-center text-4xl font-bold capitalize m-1">
           Add Task{" "}

@@ -28,7 +28,7 @@ function UpdateTask() {
     <div className=" w-full  flex  items-center justify-center min-h-screen max-h-full  bg-[#e6dfe8]  p-2  ">
       <form
         onSubmit={handleSubmit}
-        className=" h-full  w-1/2  border bg-slate-50 shadow-md rounded-xl p-3 flex flex-col gap-1 items-center justify-center"
+        className=" h-full   w-full  md:w-[700px] border bg-slate-50 shadow-md rounded-xl p-3 flex flex-col gap-1 items-center justify-center"
       >
         <h1 className="text-center text-4xl font-bold capitalize mb-1">
           Update Task

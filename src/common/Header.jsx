@@ -7,7 +7,7 @@ import useLogout from "../hooks/useLogout";
 
 function Header() {
   const navigate = useNavigate();
-  const {loading,logout}=useLogout()
+  const { loading, logout } = useLogout();
 
   const [search, setSearch] = useState("");
   return (
@@ -24,25 +24,6 @@ function Header() {
         </span>
       </h1>
 
-      <form
-        onSubmit={(e) => {
-          e.preventDefault();
-          navigate(`/search/${search}`);
-        }}
-        className="md:w-[600px]  w-[300px]  h-[50px] relative   "
-      >
-        <input
-          className=" outline-none  input bg-[#eee]  w-full h-full px-2 rounded-2xl "
-          value={search}
-          type="text"
-          placeholder="search tasks"
-          onChange={(e) => setSearch(e.target.value)}
-        />
-        <button className="absolute right-2  top-0   h-full flex items-center justify-center">
-          <FaSearch />
-        </button>
-      </form>
-
       <div className="flex gap-2">
         <span
           onClick={() => navigate("/addtask")}
@@ -53,12 +34,15 @@ function Header() {
         <span
           onClick={() => {
             logout();
-            navigate("/")
+            navigate("/");
           }}
           className="btn  bg-red-700 capitalize"
         >
-          {loading?<span className="loading loading-spinner"></span> :"logout"}
-        
+          {loading ? (
+            <span className="loading loading-spinner"></span>
+          ) : (
+            "logout"
+          )}
         </span>
       </div>
     </header>
