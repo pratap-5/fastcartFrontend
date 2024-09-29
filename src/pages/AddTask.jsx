@@ -18,6 +18,7 @@ function AddTask() {
     e.preventDefault();
     addTask(taskData);
     navigate("/");
+    window.location.reload();
    
   };
 

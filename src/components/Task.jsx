@@ -17,9 +17,9 @@ function Task({
   const { setTaskData } = useData();
 
   return (
-    <div className="bg-slate-400 text-primary-content w-full h-full  card">
+    <div className="bg-slate-400 text-primary-content w-full  min-h-full  card">
       <div className="card-body">
-        <h2 className="card-title text-4xl capitalize">{title}</h2>
+        <h2 className="card-title text-2xl  md:text-4xl capitalize">{title}</h2>
         <hr />
 
         <span className="flex gap-1 flex-col">

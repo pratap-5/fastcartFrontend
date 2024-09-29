@@ -20,7 +20,7 @@ function Home() {
   }, [setTasks]);
 
   return (
-    <div className=" w-full  min-h-screen max-h-full  bg-[#e6dfe8]  p-2 grid grid-cols-3 gap-2  ">
+    <div className=" w-full  min-h-screen max-h-full  bg-[#e6dfe8]  p-2 grid  grid-cols-2 md:grid-cols-3 gap-2  ">
       {loading ? <span className="loading loading-spinner"></span> : ""}
       {tasks?.map((task) => (
         <Task

@@ -4,10 +4,13 @@ import { FaSearch } from "react-icons/fa";
 import { FaTruckFast } from "react-icons/fa6";
 import { Link, useNavigate } from "react-router-dom";
 import useLogout from "../hooks/useLogout";
+import { useAuthContext } from "../context/AuthContext";
 
 function Header() {
   const navigate = useNavigate();
   const { loading, logout } = useLogout();
+
+  const { authUser } = useAuthContext();
 
   const [search, setSearch] = useState("");
   return (
@@ -31,19 +34,24 @@ function Header() {
         >
           Add Task
         </span>
-        <span
-          onClick={() => {
-            logout();
-            navigate("/");
-          }}
-          className="btn  bg-red-700 capitalize"
-        >
-          {loading ? (
-            <span className="loading loading-spinner"></span>
-          ) : (
-            "logout"
-          )}
-        </span>
+
+        {authUser ? (
+          <span
+            onClick={() => {
+              logout();
+              navigate("/");
+            }}
+            className="btn  bg-red-700 capitalize"
+          >
+            {loading ? (
+              <span className="loading loading-spinner"></span>
+            ) : (
+              "logout"
+            )}
+          </span>
+        ) : (
+          ""
+        )}
       </div>
     </header>
   );

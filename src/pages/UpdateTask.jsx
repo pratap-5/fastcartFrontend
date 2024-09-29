@@ -21,6 +21,7 @@ function UpdateTask() {
     e.preventDefault();
     updateTask(taskDatas);
     navigate("/");
+    window.location.reload();
    
   };
 
