@@ -3,10 +3,11 @@ import { FaSearch } from "react-icons/fa";
 
 import { FaTruckFast } from "react-icons/fa6";
 import { Link, useNavigate } from "react-router-dom";
-
+import useLogout from "../hooks/useLogout";
 
 function Header() {
   const navigate = useNavigate();
+  const {loading,logout}=useLogout()
 
   const [search, setSearch] = useState("");
   return (
@@ -42,11 +43,24 @@ function Header() {
         </button>
       </form>
 
-      <span  onClick={()=>navigate("/addtask")} className="btn  bg-green-700 capitalize">Add Task
-
-      </span>
-
-   
+      <div className="flex gap-2">
+        <span
+          onClick={() => navigate("/addtask")}
+          className="btn  bg-green-700 capitalize"
+        >
+          Add Task
+        </span>
+        <span
+          onClick={() => {
+            logout();
+            navigate("/")
+          }}
+          className="btn  bg-red-700 capitalize"
+        >
+          {loading?<span className="loading loading-spinner"></span> :"logout"}
+        
+        </span>
+      </div>
     </header>
   );
 }

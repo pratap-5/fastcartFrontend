@@ -34,7 +34,7 @@ function Login() {
 
             <input
               className="input  w-full mb-5 bg-[#eee]  text-[18px] text-[#383838]  "
-              placeholder="Enter username"
+              placeholder="Enter email"
               type="text"
               value={email}
               onChange={(e) => {

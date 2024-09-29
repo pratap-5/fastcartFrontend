@@ -19,7 +19,7 @@ function useSignup() {
       if (!checkData(fullName, email, password, confirmPassword))
         return;
       setLoading(true);
-      const res = await fetch(`${backendUrl}/api/auth/signup`, {
+      const res = await fetch(`${backendUrl}/api/signup`, {
         method: "POST",
         credentials: "include",
         headers: { "Content-type": "application/json" },

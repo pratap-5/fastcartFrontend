@@ -12,7 +12,7 @@ function useLogin() {
     
       if (!checkData(email, password)) return;
       setLoading(true);
-      const res = await fetch(`${backendUrl}/api/auth/login`, {
+      const res = await fetch(`${backendUrl}/api/login`, {
         method: "POST",
         credentials: "include",
         headers: { "Content-type": "application/json" },

@@ -1,8 +1,9 @@
 import { useState } from "react";
 import useData from "../zustand/useData";
+import toast from "react-hot-toast";
 
-function useAddtask() {
-  const [loading, setLoading] = useState();
+function useAddTask() {
+  const [loading, setLoading] = useState(false);
   const { backendUrl } = useData();
   const addTask = async ({
     title,
@@ -28,7 +29,7 @@ function useAddtask() {
       });
       const data = await res.json();
       if (data.error) {
-        taost.error(data.error);
+        toast.error(data.error);
 
         throw new Error(data.error);
       }
@@ -37,12 +38,11 @@ function useAddtask() {
     } finally {
       setLoading(false);
     }
-
-    return { loading, addTask };
   };
+  return { loading, addTask };
 }
 
-export default useAddtask;
+export default useAddTask;
 
 const checkData = (title, description, status, due_date, priority) => {
   if (!title || !description || !status || !due_date || !priority) {

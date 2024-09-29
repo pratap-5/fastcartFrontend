@@ -1,12 +1,23 @@
-import React from "react";
+import React, { useState } from "react";
 import useData from "../zustand/useData";
 import { useNavigate } from "react-router-dom";
+import useDeleteTask from "../hooks/useDeleteTask";
 
-function Task({ title, description, status, priority, due_date, user }) {
+function Task({
+  title,
+  description,
+  status,
+  priority,
+  due_date,
+  user,
+  task_id,
+}) {
   const navigate = useNavigate();
+  const { loading, deleteTask } = useDeleteTask();
   const { setTaskData } = useData();
+
   return (
-    <div className="bg-slate-400 text-primary-content w-full card">
+    <div className="bg-slate-400 text-primary-content w-full h-full  card">
       <div className="card-body">
         <h2 className="card-title text-4xl capitalize">{title}</h2>
         <hr />
@@ -26,19 +37,42 @@ function Task({ title, description, status, priority, due_date, user }) {
           </h2>
         </span>
 
-        <p>{description}</p>
+        <div className="flex-1">
+          <p className="text-green-700">description</p>
+          <p> {description}</p>
+        </div>
 
         <div className="card-actions justify-end c">
           <button
             onClick={() => {
-              setTaskData({ title, description, status, priority, due_date });
-              navigate("/updateTask");
+              setTaskData({
+                title,
+                description,
+                status,
+                priority,
+                due_date,
+                task_id,
+              });
+              navigate(`/updateTask/${task_id}`);
             }}
             className="capitalize btn"
           >
             update
           </button>
-          <button className="capitalize btn">delte</button>
+          <button
+            onClick={() => {
+              deleteTask(task_id);
+              navigate("/");
+              window.location.reload();
+            }}
+            className="capitalize btn"
+          >
+            {loading ? (
+              <span className="loading loading-spinner"> </span>
+            ) : (
+              "delete"
+            )}
+          </button>
         </div>
       </div>
     </div>

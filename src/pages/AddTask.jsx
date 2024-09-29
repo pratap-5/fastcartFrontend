@@ -1,7 +1,11 @@
 import React, { useState } from "react";
 
-function AddTask() {
+import useAddTask from "../hooks/useAddTask";
+import { useNavigate } from "react-router-dom";
 
+function AddTask() {
+  const navigate = useNavigate();
+  const { loading, addTask } = useAddTask();
   const [taskData, setTaskData] = useState({
     title: "",
     description: "",
@@ -12,7 +16,9 @@ function AddTask() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(taskData);
+    addTask(taskData);
+    navigate("/");
+   
   };
 
   return (
@@ -32,7 +38,7 @@ function AddTask() {
               setTaskData({ ...taskData, title: e.target.value });
             }}
             type="text"
-            placeholder="Enter Project Name"
+            placeholder=""
             className="input  w-full mb-5 bg-[#eee]  text-[18px] text-[#383838] "
           />
         </span>
@@ -44,7 +50,7 @@ function AddTask() {
               setTaskData({ ...taskData, status: e.target.value });
             }}
             type="text"
-            placeholder="Enter Project Name"
+            placeholder=""
             className="input  w-full mb-5 bg-[#eee]  text-[18px] text-[#383838] "
           />
         </span>
@@ -57,27 +63,26 @@ function AddTask() {
               setTaskData({ ...taskData, priority: e.target.value });
             }}
             type="text"
-            placeholder="Enter Project Name"
+            placeholder=""
             className="input  w-full mb-5 bg-[#eee]  text-[18px] text-[#383838] "
           />
         </span>
         <span className="w-full">
-          <p>Enter duuration date</p>
+          <p>Enter duration date</p>
           <input
             value={taskData.due_date}
             onChange={(e) => {
               setTaskData({ ...taskData, due_date: e.target.value });
             }}
             type="text"
-            placeholder="Enter Project Name"
+            placeholder=""
             className="input  w-full mb-5 bg-[#eee]  text-[18px] text-[#383838] "
           />
         </span>
 
         <span className="w-full ">
-          <p>Enter description</p>
+          <p>Add description</p>
           <textarea
-          
             value={taskData.description}
             onChange={(e) => {
               setTaskData({ ...taskData, description: e.target.value });
@@ -86,7 +91,9 @@ function AddTask() {
             placeholder="Add Details"
           ></textarea>
         </span>
-        <button className="btn  w-full capitalize">Add </button>
+        <button className="btn  w-full capitalize">
+          {loading ? <span className="loading loading-spinner"></span> : "Add"}
+        </button>
       </form>
     </div>
   );

@@ -1,7 +1,7 @@
 import { create } from "zustand";
 
 const useData = create((set) => ({
-  backendUrl: "https://fastcartbackend.onrender.com",
+  backendUrl: "http://localhost:8000",
   setBackendurl: (url) => set({ backendUrl: url }),
 
   taskData: {},

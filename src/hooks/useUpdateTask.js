@@ -1,5 +1,6 @@
 import { useState } from "react";
 import useData from "../zustand/useData";
+import toast from "react-hot-toast";
 
 function useUpdateTask() {
   const [loading, setLoading] = useState();
@@ -10,11 +11,15 @@ function useUpdateTask() {
     status,
     due_date,
     priority,
+    task_id,
   }) => {
     try {
-      if (!checkData(title, description, status, due_date, priority)) return;
+
+        if (!checkData(title, description, status, due_date, priority, task_id))
+            return;
+        console.log(task_id)
       setLoading(true);
-      const res = await fetch(`${backendUrl}/api/tasks`, {
+      const res = await fetch(`${backendUrl}/api/tasks/${task_id}`, {
         method: "PUT",
         credentials: "include",
         headers: { "Content-type": "application/json" },
@@ -28,7 +33,7 @@ function useUpdateTask() {
       });
       const data = await res.json();
       if (data.error) {
-        taost.error(data.error);
+        toast.error(data.error);
 
         throw new Error(data.error);
       }
@@ -37,16 +42,14 @@ function useUpdateTask() {
     } finally {
       setLoading(false);
     }
-
-    return { loading, updateTask };
   };
+  return { loading, updateTask };
 }
 
 export default useUpdateTask;
 
-const checkData = (title, description, status, due_date, priority) => {
-  if (!title || !description || !status || !due_date || !priority) {
-    toast.error("fiil all  the fields");
+const checkData = (title, description, status, due_date, priority, task_id) => {
+  if (!title || !description || !status || !due_date || !priority || !task_id) {
     return false;
   }
 

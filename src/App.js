@@ -9,16 +9,14 @@ import Header from "./common/Header";
 import AddTask from "./pages/AddTask";
 import UpdateTask from "./pages/UpdateTask";
 
-
-
 function App() {
   const { authUser } = useAuthContext();
   return (
     <div className=" relative  w-full h-auto  ]">
-      <Header/>
-  
+      <Header />
+
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="/" element={authUser ? <Home /> : <Navigate to="/login" />} />
 
         <Route
           path="/login"
@@ -31,26 +29,16 @@ function App() {
         <Route
           path="/addtask"
           // element={!authUser ? <Navigate to="/login" /> : <AddTask />}
-          element={ <AddTask />}
-          
-
+          element={<AddTask />}
         />
-
-
 
         <Route
-          path="/updateTask"
+          path="/updateTask/:task_id"
           // element={!authUser ? <Navigate to="/login" /> : <AddTask />}
-          element={ <UpdateTask/>}
-          
-
+          element={<UpdateTask />}
         />
-
-
       </Routes>
-   
 
-   
       <Toaster />
     </div>
   );

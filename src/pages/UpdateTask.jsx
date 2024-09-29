@@ -1,8 +1,12 @@
 import React, { useState } from "react";
 import useData from "../zustand/useData";
+import useUpdateTask from "../hooks/useUpdateTask";
+import { useNavigate } from "react-router-dom";
 
 function UpdateTask() {
   const { taskData } = useData();
+  const { loading, updateTask } = useUpdateTask();
+  const navigate = useNavigate();
 
   const [taskDatas, setTaskDatas] = useState({
     title: taskData.title,
@@ -10,11 +14,14 @@ function UpdateTask() {
     status: taskData.status,
     due_date: taskData.due_date,
     priority: taskData.priority,
+    task_id: taskData.task_id,
   });
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(taskDatas);
+    updateTask(taskDatas);
+    navigate("/");
+   
   };
 
   return (
@@ -27,59 +34,58 @@ function UpdateTask() {
           Update Task
         </h1>
         <span className="w-full">
-          <p>Enter title</p>
+          <p>Update title</p>
           <input
             value={taskDatas.title}
             onChange={(e) => {
               setTaskDatas({ ...taskDatas, title: e.target.value });
             }}
             type="text"
-            placeholder="Enter Project Name"
+            placeholder=""
             className="input  w-full mb-5 bg-[#eee]  text-[18px] text-[#383838] "
           />
         </span>
         <span className="w-full">
-          <p>Enter status</p>
+          <p>Update status</p>
           <input
             value={taskDatas.status}
             onChange={(e) => {
               setTaskDatas({ ...taskDatas, status: e.target.value });
             }}
             type="text"
-            placeholder="Enter Project Name"
+            placeholder=""
             className="input  w-full mb-5 bg-[#eee]  text-[18px] text-[#383838] "
           />
         </span>
 
         <span className="w-full">
-          <p>Enter priority</p>
+          <p>Update priority</p>
           <input
             value={taskDatas.priority}
             onChange={(e) => {
               setTaskDatas({ ...taskDatas, priority: e.target.value });
             }}
             type="text"
-            placeholder="Enter Project Name"
+            placeholder=""
             className="input  w-full mb-5 bg-[#eee]  text-[18px] text-[#383838] "
           />
         </span>
         <span className="w-full">
-          <p>Enter duuration date</p>
+          <p>Update duration date</p>
           <input
             value={taskDatas.due_date}
             onChange={(e) => {
               setTaskDatas({ ...taskDatas, due_date: e.target.value });
             }}
             type="text"
-            placeholder="Enter Project Name"
+            placeholder=""
             className="input  w-full mb-5 bg-[#eee]  text-[18px] text-[#383838] "
           />
         </span>
 
         <span className="w-full ">
-          <p>Enter description</p>
+          <p>Update description</p>
           <textarea
-          
             value={taskDatas.description}
             onChange={(e) => {
               setTaskDatas({ ...taskDatas, description: e.target.value });
@@ -89,7 +95,13 @@ function UpdateTask() {
           ></textarea>
         </span>
 
-        <button className="btn  w-full capitalize">update</button>
+        <button className="btn  w-full capitalize">
+          {loading ? (
+            <span className="loading loading-spinner"></span>
+          ) : (
+            "update"
+          )}
+        </button>
       </form>
     </div>
   );
